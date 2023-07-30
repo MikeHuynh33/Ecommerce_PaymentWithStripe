@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Product from "./Product";
 import Cart from "./Cart";
-const Products = ({ visible, visiblehandler }) => {
+const Products = ({ visible, visiblehandler, setItemInCart }) => {
   const [dataProducts, setdataProducts] = useState([]);
   const [cart, setcart] = useState([]);
   const [total, settotal] = useState(0);
@@ -22,7 +22,8 @@ const Products = ({ visible, visiblehandler }) => {
     } else {
       setcart([...cart, { ...product, quantity_cart: 1 }]);
     }
-    console.log(cart);
+    // add +1 when button click;
+    setItemInCart((prevCart) => prevCart + 1);
   }
   // Add Calculation for Total cost
   const calculateTotal = () => {

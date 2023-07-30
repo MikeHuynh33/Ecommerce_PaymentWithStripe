@@ -1,5 +1,5 @@
-import cart_logo from "../assets/shopping-bag.png";
-const NavBar = ({ visiblehandler }) => {
+import cart_logo from "../assets/shopping-cart.png";
+const NavBar = ({ visiblehandler, itemInCart }) => {
   return (
     <nav className="bg-gray-800 ">
       <div className="max-w-6xl mx-auto ">
@@ -40,10 +40,20 @@ const NavBar = ({ visiblehandler }) => {
             >
               SignUp
             </a>
-            <div className="py-4">
+            <div className="py-4 relative">
               <button onClick={() => visiblehandler()}>
-                <img src={cart_logo} alt="Shopping_cart_Logo"></img>
+                <img
+                  className="w-10 h-10"
+                  src={cart_logo}
+                  alt="Shopping_cart_Logo"
+                ></img>
               </button>
+              <span className="absolute cursor-auto text-rose-600 text-lg font-extrabold top-[20%] left-[40%]">
+                {itemInCart}
+              </span>
+              <span className="absolute text-white text-xl font-extrabold top-[30%] left-[115%]">
+                Cart
+              </span>
             </div>
           </div>
         </div>

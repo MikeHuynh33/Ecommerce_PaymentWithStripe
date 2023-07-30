@@ -1,15 +1,39 @@
 import React from "react";
 import CartItem from "./CartItem";
 const Cart = ({ itemList, totalCost, visible, visiblehandler }) => {
+  // Create randon ID user
+  function generateFakeUserId(length) {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    let fakeUserId = "";
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * characters.length);
+      fakeUserId += characters.charAt(randomIndex);
+    }
+    return fakeUserId;
+  }
+
   // Create Checkout Button Handler
   async function checkOutBtnHandler(cart) {
     const url_stripe = "http://localhost:1111/api/create-checkout-session";
+    const UserId = generateFakeUserId(10);
+    const customizeCart = cart.map((item) => ({
+      item_ID: item._id,
+      item_name: item.item_name,
+      quantity_cart: item.quantity_cart,
+      price: item.price,
+    }));
+    const req_Body = {
+      UserId: UserId,
+      itemList: customizeCart,
+    };
+    const requestBodyJSON = JSON.stringify(req_Body);
     const response = await fetch(url_stripe, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(cart),
+      body: requestBodyJSON,
     });
     const data = await response.json();
     if (data.url) {
