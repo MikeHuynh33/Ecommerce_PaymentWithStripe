@@ -7,6 +7,7 @@ import About from "./components/About";
 import Products from "./components/Products";
 import Footer from "./components/Footer";
 import Success from "./components/Success";
+import Cancel from "./components/Cancel";
 function App() {
   const [visible, setvisible] = useState(false);
   const [itemInCart, setItemInCart] = useState(0);
@@ -22,7 +23,7 @@ function App() {
       <NavBar visiblehandler={handleToggle} itemInCart={itemInCart} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
+        <Route path="/About" element={<Home />} />
         <Route
           path="/Products"
           element={
@@ -34,6 +35,7 @@ function App() {
           }
         />
         <Route path="/success" element={<Success />} />
+        <Route path="/cancel" element={<Cancel />} />
       </Routes>
       <Footer />
     </>

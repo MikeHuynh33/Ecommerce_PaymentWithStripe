@@ -1,26 +1,27 @@
-import React, { useEffect, useState } from "react";
-
-const Success = () => {
+function Cancel() {
   return (
     <div class="flex items-center justify-center h-screen">
       <div>
         <div class="flex bg-white p-10  flex-col items-center space-y-2">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="text-green-600 w-28 h-28"
             fill="none"
             viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="1"
+            stroke="red"
+            width="164"
+            height="164"
           >
             <path
               stroke-linecap="round"
               stroke-linejoin="round"
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01M12 5a9 9 0 110 18 9 9 0 010-18zm0 0v6m0 4h.01m0 4h.01"
             />
           </svg>
-          <h1 class="text-4xl font-bold">Thank You !</h1>
-          <p>Thank you for your interest! Check your email for Reciept.</p>
+          <h1 class="text-4xl font-bold">
+            Thank You ! But Transaction did not go through
+          </h1>
+          <p>Sorry Your Order was cancelled , Please try agin.</p>
           <a class="inline-flex items-center px-4 py-2 text-white bg-indigo-600 border border-indigo-600 rounded rounded-full hover:bg-indigo-700 focus:outline-none focus:ring">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +45,6 @@ const Success = () => {
       </div>
     </div>
   );
-};
+}
 
-export default Success;
+export default Cancel;
